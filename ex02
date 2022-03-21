@@ -1,0 +1,35 @@
+from abc import ABC, abstractmethod
+
+
+class Clothes(ABC):
+    @abstractmethod
+    def fabric_consumption(self):
+        pass
+
+
+class Coat(Clothes):
+    size: int
+
+    def __init__(self, size: int):
+        self.size = size
+
+    @property
+    def fabric_consumption(self):
+        return f"Расход ткани на пальто равен {self.size / 6.5 + 0.5}"
+
+
+class Costume(Clothes):
+    height: int
+
+    def __init__(self, height: int):
+        self.height = height
+
+    @property
+    def fabric_consumption(self):
+        return f"Расход ткани на костюм равен {2 * self.height + 0.3}"
+
+
+costume_1 = Costume(150)
+coat_01 = Coat(8)
+print(costume_1.fabric_consumption)
+print(coat_01.fabric_consumption)
